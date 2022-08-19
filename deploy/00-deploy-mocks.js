@@ -8,7 +8,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deployer } = await getNamedAccounts();
   const args = [BASE_FEE, GAS_PRICE_LINK];
   // If we are on a local development network, we need to deploy mocks!
-  if (developmentChains.includes(network.name) == 31337) {
+  if (developmentChains.includes(network.name)) {
     log("Local network detected! Deploying mocks...");
     //deploy a mock vrfcoordinator
     await deploy("VRFCoordinatorV2Mock", {
