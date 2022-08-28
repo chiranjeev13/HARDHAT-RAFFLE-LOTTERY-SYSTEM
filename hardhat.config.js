@@ -9,6 +9,8 @@ require("hardhat-deploy");
 const RINKEBY_RPC_URl = process.env.RINKEBY_RPC_URl;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
+const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL;
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 module.exports = {
   defaultNetwork: "hardhat",
   solidity: {
@@ -35,6 +37,21 @@ module.exports = {
       chainId: 4,
       blockConfirmations: 6,
     },
+    goerli: {
+      url: GOERLI_RPC_URL,
+      accounts: [PRIVATE_KEY],
+      chainId: 420,
+      blockConfirmations: 6,
+    },
+  },
+  gasReporter: {
+    enabled: false,
+    currency: "USD",
+    outputFile: "gas-reporter.txt",
+    noColors: true,
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY,
   },
   namedAccounts: {
     deployer: {

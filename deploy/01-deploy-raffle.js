@@ -3,8 +3,7 @@ const {
   developmentChains,
   networkConfig,
 } = require("../helper-hardhat-config");
-const { verify } = require("../helper-hardhat-config");
-
+const { verify } = require("../utils/verify");
 const VRF_SUB_FUND_AMOUNT = ethers.utils.parseEther("30");
 
 module.exports = async function ({ getNamedAccounts, deployments }) {
@@ -27,7 +26,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     );
   } else {
     vrfCoordinatorV2Address = networkConfig[chainId]["vrfCoordinatorV2"];
-    subscriptionId = networkConfig[chainId]["subscritpionId"];
+    subscriptionId = networkConfig[chainId]["subscriptionId"];
   }
 
   const entranceFee = networkConfig[chainId]["entranceFee"];
